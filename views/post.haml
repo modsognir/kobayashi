@@ -1,0 +1,35 @@
+%section.container
+  %article.post
+    %header
+      %h1= @post.title
+      %h2= @post.date.strftime("%d %b %Y")
+    -# If there is nothing but the excerpt (ie. no more tag)
+    -# just post that, otherwise the excerpt and rest.
+    - if @post.rest_of_post.nil?
+      = @post.excerpt
+    - else
+      = @post.excerpt + @post.rest_of_post
+
+    .deets
+      Posted by
+      = if @post.author then @post.author.split.first else Kobayashi.author.split.first end
+      on
+      %time{:datetime => @post.time.xmlschema, :pubdate => 'pubdate'}= @post.time.strftime('%A, %e %B %Y @ %l:%m %P')
+      - unless @post.location.nil?
+        from
+        = @post.location
+
+    %ul.tags
+      %li.i.icon-tags
+        - @post.tags.each do |tag|
+          %li
+            %a.badge{:href => "/tags/#{tag.parameterize}"}
+              = tag
+
+#comments
+  #disqus_thread.container
+%script{:type => "text/javascript"}
+  (function(){var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true; dsq.src = 'http://' + '#{Kobayashi.disqus}' + '.disqus.com/embed.js'; (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();
+
+
+

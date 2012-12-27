@@ -1,0 +1,60 @@
+%script{:src => "//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js", :type => "text/javascript"}
+.blog-index
+  .container
+    %header
+      %a{:href => @post.url}
+        %h1= @post.title
+
+    %p= @post.excerpt
+
+    %p
+      %a{:href => @post.url}
+        Continue reading&#8230;
+
+
+/ Latest tweets to save need for pace in footer as listing
+.twitter
+  .container
+    %ul#twitter
+      %li
+        %i.icon-twitter
+    %ul#tweets
+      %li.loading
+        %p Updating status &#8230;
+
+/ Recent posts and Flickr photo sets
+.bottom-bar
+  .container
+    .row
+      .span6
+        %h2 Recent
+        %ul#recent
+          - @archives_on_index.each do |post|
+            %li
+              %a{:href => post[:url]}
+                = post[:date].strftime('%m.%d') + ' - '
+                = post[:title]
+
+      .offset6
+        %h2 Photos
+        -# flickr div id is used for the getFlickrSets javascript
+        #flickr
+    .row
+      .span6
+        %p
+          Not enough? Browse
+          %a{:href => "/archives"}
+            the full archives.
+      .offset6
+        %p
+          Latest photosets from
+          %a{:href => "#{'http://flickr.com/' + Kobayashi.flickr + '/sets'}"}
+            my Flickr stream.
+%script{:type => "text/javascript"}
+  $(document).ready(function() {
+  $(getTwitterFeed("#{Kobayashi.twitter}", 1, true));
+  $(getFlickrSets("#{Kobayashi.flickr}", "#{Kobayashi.flickrid}", "#{Kobayashi.flickrapi}"));
+  });
+
+
+

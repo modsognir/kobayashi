@@ -1,0 +1,31 @@
+%section.container
+  %article#archives
+    %header
+      %h1= @title
+    %p
+      You can also browse the
+      %a{:href => "/tags"} archives by tags.
+
+    - if @posts.nil? || @posts.empty?
+      %h3 Hmmm... Seems like we have no posts during that time (<em>or</em> you're trying to peer into the future!)
+    - else
+      - archive_date = @posts.first[:date]
+      - archive_year = archive_date.year
+      - archive_month = archive_date.month
+      .year
+        = archive_year
+      .month
+        = archive_date.strftime('%b') # since archive_month now number
+      - @posts.each do |post|
+        - if post[:date].year != archive_year
+          - archive_year = post[:date].year
+          .year= archive_year
+        - if post[:date].month != archive_month
+          - archive_month = post[:date].month
+          - archive_date = post[:date]
+          .month= archive_date.strftime('%b').upcase
+        .day= post[:date].strftime('%d')
+        %article
+          %a{:href => post[:url]}
+            %h2= post[:title]
+

@@ -1,0 +1,18 @@
+!!! xml
+%urlset{:xmlns => "http://www.sitemaps.org/schemas/sitemap/0.9"}
+  %url
+    %loc= Kobayashi.blog_url
+    %priority 1.0
+    %changefreq daily
+  - Kobayashi::Page.all.each do |page|
+  - page = Kobayashi::Post.parse_post(page.to_s)
+    %url
+      %loc= Kobayashi.blog_url + page.url
+      %priority 0.9
+      %changefreq weekly
+  - @posts.each do |post|
+  - post = Kobayashi::Post.parse_post(post[:file])
+    %url
+      %loc= Kobayashi.blog_url + post.url
+      %priority 0.8
+      %changefreq weekly

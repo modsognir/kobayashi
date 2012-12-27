@@ -1,0 +1,53 @@
+%section.container
+  %article.tag-counts
+    %header
+      %h1= @title
+    -# Display all tag counts else check tag us empty else display tagged posts
+    - if @tag_counts
+      .tags
+        - @tag_counts.each_pair do |tag, count|
+          %a.badge{:href => "/tags/#{tag.parameterize}"}
+            = tag + "&nbsp;(" + count.to_s + ")"
+
+    - elsif @tagged_posts.empty?
+      %h3
+        Looks like there are <strong>no</strong> posts tagged with
+        = @tag
+        (but maybe there <em>should</em> be. Hmmm...)
+
+    - else
+      %p
+        There are
+        = @tagged_posts.size
+        posts tagged
+        = "\"" + @tag + ".\""
+        You can also
+        %a{:href => "/tags"}
+          browse by all tags.
+      #archives
+        - archive_date = @tagged_posts.first[:date]
+        - archive_year = archive_date.year
+        - archive_month = archive_date.month
+        .year= archive_year
+        .month= archive_date.strftime('%b')
+        - @tagged_posts.each do |post|
+          -#- post = Kobayashi::Post.parse_post(post)
+          - if post[:date].year != archive_year
+            - archive_year = post[:date].year
+            .year= archive_year
+          -# use this if you want a marker for each month
+          - if post[:date].month != archive_month
+            - archive_month = post[:date].month
+            - archive_date = post[:date]
+            .month= archive_date.strftime('%b')
+          .day= post[:date].strftime('%d')
+          %article
+            %a{:href => post[:url]}
+              %h2= post[:title]
+            %ul.tags
+              %li.i.icon-tags
+                - post[:tags].each do |tag|
+                  %li
+                    %a.badge{:href => "/tags/#{tag.parameterize}"}
+                      = tag
+

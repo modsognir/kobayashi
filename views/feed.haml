@@ -1,0 +1,35 @@
+!!! xml
+%feed{:xmlns => "http://www.w3.org/2005/Atom"}
+  %title
+    = Kobayashi.blog_name + " feed"
+  %link{:href => "#{Kobayashi.blog_url}", :rel => "alternate", :hreflang => "en", :type => "text/html"}/
+  %link{:href => "#{Kobayashi.blog_url + '/atom.xml'}", :rel => "self", :hreflang => "en", :type => "application/atom+xml"}/
+
+  %id= Kobayashi.blog_url
+  %author
+    %name= Kobayashi.author
+    %uri= Kobayashi.blog_url
+    %email samiam@yoursitehere.com
+  %contributor
+    %name= Kobayashi.author
+  - first_post = @posts.first
+  - first_post = Kobayashi::Post.parse_post(first_post[:file])
+  %updated= first_post.time.xmlschema
+
+  - @posts.each do |post|
+    - post = Kobayashi::Post.parse_post(post[:file])
+    %entry
+      %title{:type => "html"}= post.title
+      %id= Kobayashi.blog_url + post.url
+      %published= post.time.xmlschema
+      %updated= post.time.xmlschema
+      %link{:href => "#{Kobayashi.blog_url + post.url}", :rel => "alternate", :hreflang => "en", :type => "text/html"}/
+      %content{:type => "xhtml", "xml:lang"=>"en", "xml:base"=>"#{Kobayashi.blog_url}"}
+        - if post.rest_of_post
+          %div{:xmlns => "http://www.w3.org/1999/xhtml"}
+            = post.excerpt + post.rest_of_post
+        - else
+          %div{:xmlns => "http://www.w3.org/1999/xhtml"}
+            = post.excerpt
+
+
