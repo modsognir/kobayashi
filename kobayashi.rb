@@ -209,13 +209,13 @@ class Kobayashi::Post
 
       post = OpenStruct.new YAML.load(meta)
       # yields metadata from Jekyll wp converted posts
-      # post.layout, post.title, post.date, post.comments, post.published, post.categories(an array) etc
+      # post.layout, post.title, post.date, post.comments, post.published, post.tags (an array) etc
       post.title =    post.title
       post.slug =     post.title.parameterize
       post.time =     Time.parse(post.date.to_s)
       post.date =     post.time.to_date
       post.body =     Kobayashi::render_markdown(body)
-      post.tags =     post.categories
+      post.tags =     post.tags
       # If a summary exists in meta, uses it and renders it.
       # Otherwise, takes the body, looks for <!--more--> tag and then
       # uses that as the excerpt. If no <!--more--> tag, excerpt is body

@@ -45,7 +45,7 @@ namespace :post do
       post.puts "location:"
       post.puts "comments: true"
       post.puts "summary: "
-      post.puts "categories: []"
+      post.puts "tags: []"
       post.puts "---"
       post.puts "Start writing!"
     end

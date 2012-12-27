@@ -5,7 +5,7 @@ wordpress_id: 23
 wordpress_url: http://www.wakatara.com/blog/2004/06/11/enter-stage-left/
 date: 2012-02-24 02:00:35 +1100
 comments: true
-categories:
+tags:
 - blogable
 ---
 <p>OK, so I've given in. After being chewed out by friends who had not even<br />

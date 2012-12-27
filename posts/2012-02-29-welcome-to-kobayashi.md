@@ -5,7 +5,7 @@ date: 2012-02-29 21:19:05 +1100
 location: Sydney
 comments: true
 summary:
-categories: [blogable]
+tags: [blogable]
 ---
 Kobayashi is my take on small, fast, easy-to-use blog engine for ruby
 developers. It uses simple markdown posts, git operations and hosts on

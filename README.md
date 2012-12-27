@@ -79,6 +79,20 @@ fixtures for tests so may cause test failure.)
 
 Then you're ready to use Kobayashi.
 
+### Migrating
+
+If you are using wordpress, there is a script in `./importers` to
+migrate from wordpress using a mysql database to Kobayashi's format.
+Instructions are in the actual file to run the importer.
+
+If you're using Jekyll, this is even easier since the idea of Jekyll's
+yaml front matter posts is one I loved (It is also very similar to
+Serious'), so Kobayashi uses a virtually identical format.
+
+Migrating from a vanilla Jekyll install should be as simple as copying
+all the files from the `_posts` directory and sticking them in the
+`/posts` directory in Kobayashi. Done.
+
 ## Using Kobayashi
 
 1. rake

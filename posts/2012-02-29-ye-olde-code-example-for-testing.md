@@ -3,7 +3,7 @@ layout: post
 title: "Ye Olde Code Example for Testing"
 date: 2012-02-29 18:25:31 +1100
 comments: true
-categories: [dev, code, hacking]
+tags: [dev, code, hacking]
 ---
 Alright, so this is how we see if these things we're working on will
 *actually* work the way they're supposed to and render unto Caesar what
