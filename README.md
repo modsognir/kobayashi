@@ -127,6 +127,26 @@ to both your github repo and heroku.
 
 That's it.
 
+## Updating Kobayashi
+
+If you've set up your github and heroku remotes on your system as
+detailed above (so with an origin branch for Kobayashi upstream and a
+blog branch as the "master" for your own changes) then managing updates
+is simple (and your rake tasks work as expected.).
+
+To get updates to Kobayashi, `git checkout master` and then `git pull
+origin master` to bring and apply the latest changes from Kobayashi to
+your master branch.
+
+Once you're satisfied all these work as expected and you're fine with
+the changes, `git checkout blog` to switch back to your own branch and
+then `git merge master` in order to have those changes applied to your
+own customized version of the blog software (and resolving any merge
+conflicts you might have caused with your own hacking.).
+
+Once done, `git add .` and `git commit` and then `rake deploy` as normal
+to push the code to both your own private blog repo and heroku.
+
 ## Thanks To...
 
 Everyone who wrote a bit of great blog software before me, from the
@@ -137,17 +157,17 @@ cherry-pick and learn from.
 
 I'd also like to thank the rubberducking superpowers of @scottharveyco
 and @tjmcewan for listening to me talk through things like tagging and
-Sinatra set as well as pointing out spelling-mistake-syntax-error
-inducing code issues, when I look at the production server while making
+Sinatra set as well as pointing out spelling-mistake-as-syntax-error
+inducing code issues, when I looked at the production servers while making
 development changes and general basic stupidity with javascript. I
 assure you, as workmates with me at ISF, they have suffered *long*.
 
 Also, initially when starting this project at Railscamp New Zealand on
 Mount Cheeseman (where, seriously, 80% of it got written), @vertis and
-@modogsnir for pointing out basic issues shoulder surfing my
-code and generally amusing heckling.
+@modogsnir for pointing out basic issues shoulder surfing my code and
+generally amusing, yet helpful, heckling.
 
-Last and certainly not least, the very lovely and amazingly patient
+Last and not least, the very lovely and amazingly patient
 @aemeredith for walking me through things like typography, font stacks,
 and all sorts of basic designer-y stuff I should really, really know by
 this point in my career as well as giving me *that* look whenever I'd
@@ -155,7 +175,7 @@ mention the lack of tests. Guilt is a powerful motivator. Any tests
 there are in the code base are because of that look.
 
 Finally, while I'm on the long Oscar speech, I'd also really like to
-thank the absolutely *amazing* Ruby and Rails community here in
-Australia which have been absolutely amazing in terms of support,
-mentoring and just being plain amazing. Seriously, you all rock.
+thank the *amazing* Ruby and Rails community here in Australia which
+have been absolutely amazing in terms of support, mentoring, answering
+of dumb questions and just being plain amazing. Seriously, you all rock.
 
