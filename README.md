@@ -50,6 +50,12 @@ create the app.
 Set up Add-Ons like Custom Domain in heroku and then point your DNS and
 such towards the app as per Heroku's setup.
 
+In order to have caching work properly, you also need to add in the
+memcache add-on which you can do form the command line `heroku
+addons:add memcache:5mb` in order to have the combined metadata store
+from Dalli work with memcache even though the entitystote works with the
+filesystem (see `config.ru` for how that is configured.).
+
 To start up a local version of the server simply `foreman start` in the
 root directory of the project and then navigate to
 `http://localhost:5000` to see your site.
