@@ -147,6 +147,19 @@ conflicts you might have caused with your own hacking.).
 Once done, `git add .` and `git commit` and then `rake deploy` as normal
 to push the code to both your own private blog repo and heroku.
 
+## Contributing
+
+Pull requests greatefully accepted.
+
+If you see anything you can do better, have a killer feature (though I'm
+trying to keep Kobayashi as light as possible) or have a bug you've
+found you'd like to crush, please fork, create a branch, write some
+tests to demonstrate it really works and then send in your ull request.
+
+In particular, if you're an awesome designer and can whip up a default
+design for Kobayashi to use (particularly a mobile responsive one), I'd
+love to hear from you.
+
 ## Thanks To...
 
 Everyone who wrote a bit of great blog software before me, from the
