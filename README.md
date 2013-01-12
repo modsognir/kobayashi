@@ -177,7 +177,7 @@ assure you, as workmates with me at ISF, they have suffered *long*.
 
 Also, initially when starting this project at Railscamp New Zealand on
 Mount Cheeseman (where, seriously, 80% of it got written), @vertis and
-@modogsnir for pointing out basic issues shoulder surfing my code and
+@modsognir for pointing out basic issues shoulder surfing my code and
 generally amusing, yet helpful, heckling.
 
 Last and not least, the very lovely and amazingly patient
