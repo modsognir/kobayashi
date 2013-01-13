@@ -11,5 +11,5 @@ use Rack::Cache,
   default_ttl: 300
 
 require 'kobayashi'
-run Kobayashi
+run Kobayashi.server
 
